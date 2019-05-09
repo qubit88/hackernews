@@ -29,10 +29,17 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>{helloWorld}</h1>
-      <p>
-        My name is {user.firstName} {user.lastName}.
-      </p>
+      {list.map(item => {
+        return (
+          <div key={item.objectID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
