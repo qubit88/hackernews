@@ -22,10 +22,17 @@ const list = [
 ];
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: list,
+      name: "pikabu"
+    };
+  }
   render() {
     return (
       <div className="App">
-        {list.map(item => {
+        {this.state.list.map(item => {
           return (
             <div key={item.objectID}>
               <span>
@@ -33,6 +40,7 @@ class App extends React.Component {
               </span>
               <span>{item.author}</span>
               <span>{item.num_comments}</span>
+              <span>{item.points}</span>
             </div>
           );
         })}
