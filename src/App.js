@@ -21,27 +21,24 @@ const list = [
   }
 ];
 
-function App() {
-  let helloWorld = "Welcome to the Road to Learn React";
-  let user = {
-    firstName: "Qubit",
-    lastName: "Stark"
-  };
-  return (
-    <div className="App">
-      {list.map(item => {
-        return (
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-          </div>
-        );
-      })}
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        {list.map(item => {
+          return (
+            <div key={item.objectID}>
+              <span>
+                <a href={item.url}>{item.title}</a>
+              </span>
+              <span>{item.author}</span>
+              <span>{item.num_comments}</span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 }
 
 export default App;
