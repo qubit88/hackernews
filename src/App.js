@@ -36,6 +36,10 @@ class App extends React.Component {
     const list = this.state.list.filter(item => item.objectID !== id);
     this.setState({ list });
   }
+
+  onClickHandler = () => {
+    console.log(this);
+  };
   render() {
     return (
       <div className="App">
@@ -45,7 +49,7 @@ class App extends React.Component {
               <span>
                 <a href={item.url}>{item.title}</a>
               </span>
-              <span>{item.author}</span>
+              <span onClick={this.onClickHandler}>{item.author}</span>
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
               <span>
