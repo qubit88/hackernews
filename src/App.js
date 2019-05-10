@@ -50,13 +50,15 @@ class App extends React.Component {
   }
 
   render() {
+    const { searchTerm, list } = this.state;
+
     return (
       <div className="App">
         <form>
           <input type="text" onChange={this.onSearchChange} />
         </form>
 
-        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
+        {list.filter(isSearched(searchTerm)).map(item => {
           const onClickHandler = () => this.onDismiss(item.objectID);
           return (
             <div key={item.objectID}>
