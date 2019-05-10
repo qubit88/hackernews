@@ -37,26 +37,21 @@ class App extends React.Component {
     this.setState({ list });
   }
 
-  onClickHandler = () => {
-    console.log(this);
-  };
   render() {
     return (
       <div className="App">
         {this.state.list.map(item => {
+          const onClickHandler = () => this.onDismiss(item.objectID);
           return (
             <div key={item.objectID}>
               <span>
                 <a href={item.url}>{item.title}</a>
               </span>
-              <span onClick={this.onClickHandler}>{item.author}</span>
+              <span>{item.author}</span>
               <span>{item.num_comments}</span>
               <span>{item.points}</span>
               <span>
-                <button
-                  onClick={() => this.onDismiss(item.objectID)}
-                  type="button"
-                >
+                <button onClick={onClickHandler} type="button">
                   Dismiss
                 </button>
               </span>
