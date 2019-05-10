@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Search from "./Search";
+import Table from "./Table";
 
 const list = [
   {
@@ -20,12 +22,6 @@ const list = [
     objectID: 1
   }
 ];
-
-function isSearched(searchTerm) {
-  return function(item) {
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
-  };
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -54,32 +50,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <form>
-          <input
-            value={searchTerm}
-            type="text"
-            onChange={this.onSearchChange}
-          />
-        </form>
+        <Search value={searchTerm} onChange={this.onSearchChange} />
 
-        {list.filter(isSearched(searchTerm)).map(item => {
-          const onClickHandler = () => this.onDismiss(item.objectID);
-          return (
-            <div key={item.objectID}>
-              <span>
-                <a href={item.url}>{item.title}</a>
-              </span>
-              <span>{item.author}</span>
-              <span>{item.num_comments}</span>
-              <span>{item.points}</span>
-              <span>
-                <button onClick={onClickHandler} type="button">
-                  Dismiss
-                </button>
-              </span>
-            </div>
-          );
-        })}
+        <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
       </div>
     );
   }
