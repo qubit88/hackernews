@@ -1,13 +1,9 @@
 import React from "react";
 
-function Search(props) {
+function Search({ value, onChange, children }) {
   return (
     <form>
-      <input
-        value={props.searchTerm}
-        type="text"
-        onChange={props.onSearchChange}
-      />
+      {children} <input value={value} type="text" onChange={onChange} />
     </form>
   );
 }
