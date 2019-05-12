@@ -38,8 +38,10 @@ class App extends React.Component {
   }
 
   onDismiss(id) {
-    const list = this.state.list.filter(item => item.objectID !== id);
-    this.setState({ list });
+    const updatedHits = this.state.result.hits.filter(
+      item => item.objectID !== id
+    );
+    this.setState({ ...this.state.result, hits: updatedHits });
   }
 
   onSearchChange(event) {
