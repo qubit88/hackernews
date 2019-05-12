@@ -1,12 +1,6 @@
 import React from "react";
 import Button from "./Button";
 
-function isSearched(searchTerm) {
-  return function(item) {
-    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
-  };
-}
-
 function Table({ list, pattern, onDismiss }) {
   const largeColumn = {
     width: "40%"
@@ -19,7 +13,7 @@ function Table({ list, pattern, onDismiss }) {
   };
   return (
     <div className="table">
-      {list.filter(isSearched(pattern)).map(item => {
+      {list.map(item => {
         return (
           <div key={item.objectID} className="table-row">
             <span style={largeColumn}>
