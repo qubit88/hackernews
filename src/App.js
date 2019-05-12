@@ -51,10 +51,6 @@ class App extends React.Component {
   render() {
     const { searchTerm, result } = this.state;
 
-    if (!result) {
-      return null;
-    }
-
     return (
       <div className="page">
         <div className="interactions">
@@ -62,11 +58,13 @@ class App extends React.Component {
             Search
           </Search>
 
-          <Table
-            list={result.hits}
-            pattern={searchTerm}
-            onDismiss={this.onDismiss}
-          />
+          {result && (
+            <Table
+              list={result.hits}
+              pattern={searchTerm}
+              onDismiss={this.onDismiss}
+            />
+          )}
         </div>
       </div>
     );
