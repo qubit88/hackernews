@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import renderer from "react-test-renderer";
+import Enzyme, { shallow, mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import App from "./App";
 import Search from "./Search";
 import Button from "./Button";
 import Table from "./Table";
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe("App", () => {
   it("renders without crashing", () => {
@@ -47,6 +51,11 @@ describe("Button", () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  // it("has text child", () => {
+  //   const wrapper = mount(<Button>Give Me More</Button>);
+
+  //   expect(wrapper.type()).to.equal("button");
+  // });
 });
 
 describe("Table", () => {
@@ -67,5 +76,11 @@ describe("Table", () => {
 
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it("shows two items in list", () => {
+    const element = shallow(<Table {...props} />);
+
+    expect(element.find(".table-row").length).toBe(2);
   });
 });
